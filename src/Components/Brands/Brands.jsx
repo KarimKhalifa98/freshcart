@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Styles from "./Brands.module.css";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { FallingLines } from "react-loader-spinner";
 import { Helmet } from "react-helmet";

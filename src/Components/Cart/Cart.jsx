@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { data } from "react-router-dom";
 
 export default function Cart() {
   let headers = {

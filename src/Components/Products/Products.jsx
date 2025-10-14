@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext } from "react";
 import Styles from "./Products.module.css";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { FallingLines } from "react-loader-spinner";
 import { cartContext } from "../../CartContext/CartContext";

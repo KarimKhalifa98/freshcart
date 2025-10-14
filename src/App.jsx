@@ -12,7 +12,7 @@ import NotFound from "./Components/NotFound/NotFound";
 import UserContextProvider from "./UserContext/UserContext";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CartContextProvider from "./CartContext/CartContext";
 
 
