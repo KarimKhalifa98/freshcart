@@ -12,7 +12,10 @@ function CategorySlider() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/categories");
   }
 
-  let { isLoading, data } = useQuery("categorySlider", getCategories);
+  let { isLoading, data } = useQuery({
+    queryKey: ["categorySlider"],
+    queryFn: getCategories
+  });
 
   return (
     <div>

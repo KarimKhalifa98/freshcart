@@ -12,19 +12,27 @@ export default function Products() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/products");
   }
 
-  let { isLoading, data } = useQuery("allProducts", getAllProducts);
+  let { isLoading, data } = useQuery({
+    queryKey: ["allProducts"],
+    queryFn: getAllProducts,
+  });
 
   let { addToCart } = useContext(cartContext);
 
   async function addProduct(productId) {
-    let { data } = await addToCart(productId);
+    await addToCart(productId);
   }
 
   return (
     <>
-      <Helmet>
-        <title>Products</title>
-      </Helmet>
+      {window.location.pathname === "/products" ? (
+        <Helmet>
+          <title>Products</title>
+        </Helmet>
+      ) : (
+        ""
+      )}
+
       <h2 className="mb-4">
         {window.location.pathname === "/products"
           ? "All Products"

@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { FallingLines } from "react-loader-spinner";
 
-
 export default function ProductDetails() {
   let { id } = useParams();
   function getProductDetails(productId) {
@@ -15,9 +14,10 @@ export default function ProductDetails() {
       `https://ecommerce.routemisr.com/api/v1/products/${productId}`
     );
   }
-  let { data, isLoading } = useQuery("productDetails", () =>
-    getProductDetails(id)
-  );
+  let { data, isLoading } = useQuery({
+    queryKey: ["productDetails"],
+    queryFn: () => getProductDetails(id),
+  });
   let product = data?.data.data;
   return (
     <>
@@ -44,11 +44,7 @@ export default function ProductDetails() {
                 {product.images.map((img, index) => {
                   return (
                     <SwiperSlide key={index}>
-                      <img
-                        className="w-100"
-                        src={img}
-                        alt={product.title}
-                      />
+                      <img className="w-100" src={img} alt={product.title} />
                     </SwiperSlide>
                   );
                 })}
@@ -62,9 +58,7 @@ export default function ProductDetails() {
                 <span>
                   {product.priceAfterDiscount ? (
                     <>
-                      <span className="line-through">
-                        {product.price}
-                      </span>{" "}
+                      <span className="line-through">{product.price}</span>{" "}
                       <span>{product.priceAfterDiscount}</span>
                     </>
                   ) : (

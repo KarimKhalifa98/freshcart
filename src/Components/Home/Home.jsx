@@ -4,11 +4,14 @@ import MainSlider from "../MainSlider/MainSlider";
 import Products from "../Products/Products";
 import CategorySlider from "../CategorySlider/CategorySlider";
 
+
 export default function Home() {
-  return <>
+  return (
+    <>
+
       <MainSlider />
       <CategorySlider />
       <Products />
     </>
-
+  );
 }

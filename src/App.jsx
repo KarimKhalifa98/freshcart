@@ -15,40 +15,81 @@ import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CartContextProvider from "./CartContext/CartContext";
 
-
-
 function App() {
-let routers = createBrowserRouter(
-  [
+  let routers = createBrowserRouter([
     {
-      path: "", element: <Layout />, children: [
-        { index: true, element: <ProtectedRoute><Home /> </ProtectedRoute>, },
-        {  path: "products",element:<ProtectedRoute> <Products /> </ProtectedRoute>,},
-        { path: "cart", element: <ProtectedRoute><Cart />  </ProtectedRoute>, },
-        {path: "categories", element: <ProtectedRoute> <Categories /> </ProtectedRoute>,},
-        { path: "brands", element: <ProtectedRoute><Brands /> </ProtectedRoute>, },
-        {path: "productdetails/:id", element: <ProtectedRoute>  <ProductDetails /> </ProtectedRoute> ,},
+      path: "",
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: (
+            <ProtectedRoute>
+              <Home />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "products",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Products />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "cart",
+          element: (
+            <ProtectedRoute>
+              <Cart />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "categories",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Categories />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "brands",
+          element: (
+            <ProtectedRoute>
+              <Brands />{" "}
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "productdetails/:id",
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <ProductDetails />{" "}
+            </ProtectedRoute>
+          ),
+        },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: "*", element: <NotFound /> },
       ],
     },
-  ],
-
-);
-
+  ]);
 
   const queryClient = new QueryClient();
   return (
     <>
-    <UserContextProvider>
-      <CartContextProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={routers}></RouterProvider>
-        </QueryClientProvider>
-      </CartContextProvider>
-      </UserContextProvider>
-      </>
+      <QueryClientProvider client={queryClient}>
+        <UserContextProvider>
+          <CartContextProvider>
+            <RouterProvider router={routers}></RouterProvider>
+          </CartContextProvider>
+        </UserContextProvider>
+      </QueryClientProvider>
+    </>
   );
 }
 
